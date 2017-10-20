@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-17</date>
+ <date>2017-10-20</date>
  <version>
   <release>1.2.6</release>
   <api>1.2.0</api>
@@ -90,7 +90,6 @@
       <file name="AllTests.php" role="test" />
       <file name="bootstrap.php" role="test" />
       <file name="ParseTest.php" role="test" />
-      <file name="phpunit.xml" role="test" />
      </dir> <!-- /test/Horde/ListHeaders -->
     </dir> <!-- /test/Horde -->
    </dir> <!-- /test -->
@@ -173,7 +172,6 @@
    <install as="Horde/ListHeaders/AllTests.php" name="test/Horde/ListHeaders/AllTests.php" />
    <install as="Horde/ListHeaders/bootstrap.php" name="test/Horde/ListHeaders/bootstrap.php" />
    <install as="Horde/ListHeaders/ParseTest.php" name="test/Horde/ListHeaders/ParseTest.php" />
-   <install as="Horde/ListHeaders/phpunit.xml" name="test/Horde/ListHeaders/phpunit.xml" />
   </filelist>
  </phprelease>
  <changelog>
@@ -396,7 +394,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
