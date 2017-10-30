@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-06-22</date>
+ <date>2017-10-30</date>
  <version>
   <release>1.2.6</release>
   <api>1.2.0</api>
@@ -28,6 +28,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="ListHeaders">
+      <file name="CHANGES" role="doc" />
       <file name="COPYING" role="doc" />
      </dir> <!-- /doc/Horde/ListHeaders -->
      </dir> <!-- /doc/Horde -->
@@ -154,6 +155,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/ListHeaders/CHANGES" />
    <install as="COPYING" name="doc/Horde/ListHeaders/COPYING" />
    <install as="Horde/ListHeaders.php" name="lib/Horde/ListHeaders.php" />
    <install as="Horde/ListHeaders/Base.php" name="lib/Horde/ListHeaders/Base.php" />
@@ -402,7 +404,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-06-22</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
