@@ -33,9 +33,6 @@
     "autoload": {
         "psr-0": {
             "Horde_ListHeaders": "lib/"
-        },
-        "psr-4": {
-            "Horde\\ListHeaders\\": "src/"
         }
     }
 }
