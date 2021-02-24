@@ -2,9 +2,7 @@
 id: ListHeaders
 name: ListHeaders
 full: List headers parsing library
-description: >-
-  A library that parses Mailing List Headers as defined in RFC
-  2369 & RFC 2919.
+description: A library that parses Mailing List Headers as defined in RFC 2369 & RFC 2919.
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_ListHeaders
@@ -16,11 +14,11 @@ authors:
     active: false
     role: lead
 version:
-  release: 1.2.6
-  api: 1.2.0
+  release: 2.0.0alpha1
+  api: 2.0.0alpha1
 state:
-  release: stable
-  api: stable
+  release: alpha
+  api: alpha
 license:
   identifier: LGPL-2.1
   uri: http://www.horde.org/licenses/lgpl21
