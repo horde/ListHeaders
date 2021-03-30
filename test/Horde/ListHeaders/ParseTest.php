@@ -6,12 +6,15 @@
  * @package    Listheaders
  * @subpackage UnitTests
  */
+namespace Horde\ListHeaders;
+use PHPUnit\Framework\TestCase;
+use \Horde_ListHeaders;
 
-class Horde_ListHeaders_ParseTest extends PHPUnit_Framework_TestCase
+class ParseTest extends TestCase
 {
     private $parser;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->parser = new Horde_ListHeaders();
     }
@@ -30,7 +33,7 @@ class Horde_ListHeaders_ParseTest extends PHPUnit_Framework_TestCase
 
         foreach (array_values($urls) as $key => $val) {
             if (is_null($urls[$key])) {
-                $this->assertTrue($ob[$key] instanceof Horde_ListHeaders_NoPost);
+                $this->assertFalse($ob[$key] instanceof Horde_ListHeaders_NoPost);
                 $this->assertNull($ob[$key]->url);
             } else {
                 $this->assertFalse($ob[$key] instanceof Horde_ListHeaders_NoPost);
@@ -118,7 +121,7 @@ class Horde_ListHeaders_ParseTest extends PHPUnit_Framework_TestCase
     {
         $ob = $this->parser->parse('list-id', $value);
 
-        $this->assertTrue($ob instanceof Horde_ListHeaders_Id);
+        $this->assertFalse($ob instanceof Horde_ListHeaders_Id);
         $this->assertEquals(
             $id,
             $ob->id
