@@ -1,30 +1,40 @@
 <?php
+
 /**
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
+ *
+ * See the enclosed file LICENSE for license information (LGPL). If you
+ * did not receive this file, see http://www.horde.org/licenses/lgpl21.
+ *
  * @author     Michael Slusarz <slusarz@horde.org>
  * @category   Horde
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @package    Listheaders
+ * @package    ListHeaders
  * @subpackage UnitTests
  */
-namespace Horde\ListHeaders;
-use PHPUnit\Framework\TestCase;
-use \Horde_ListHeaders;
 
+namespace Horde\ListHeaders\Test;
+
+use PHPUnit\Framework\TestCase;
+use Horde_ListHeaders;
+use Horde_ListHeaders_Base;
+use Horde_ListHeaders_Id;
+use Horde_ListHeaders_NoPost;
+use Horde_Mime_Headers;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+
+#[CoversClass(Horde_ListHeaders::class)]
+#[CoversClass(Horde_ListHeaders_Base::class)]
+#[CoversClass(Horde_ListHeaders_Id::class)]
+#[CoversClass(Horde_ListHeaders_NoPost::class)]
 class ParseTest extends TestCase
 {
-    private $parser;
-
-    public function setUp(): void
-    {
-        $this->parser = new Horde_ListHeaders();
-    }
-
-    /**
-     * @dataProvider parsingProvider
-     */
+    #[DataProvider('parsingProvider')]
     public function testBaseParsing($header, $value, $urls, $comments)
     {
-        $ob = $this->parser->parse($header, $value);
+        $parser = new Horde_ListHeaders();
+        $ob = $parser->parse($header, $value);
 
         $this->assertEquals(
             count($urls),
@@ -33,10 +43,10 @@ class ParseTest extends TestCase
 
         foreach (array_values($urls) as $key => $val) {
             if (is_null($urls[$key])) {
-                $this->assertFalse($ob[$key] instanceof Horde_ListHeaders_NoPost);
+                $this->assertInstanceOf(Horde_ListHeaders_NoPost::class, $ob[$key]);
                 $this->assertNull($ob[$key]->url);
             } else {
-                $this->assertFalse($ob[$key] instanceof Horde_ListHeaders_NoPost);
+                $this->assertNotInstanceOf(Horde_ListHeaders_NoPost::class, $ob[$key]);
                 $this->assertEquals(
                     $urls[$key],
                     $ob[$key]->url
@@ -56,72 +66,71 @@ class ParseTest extends TestCase
         }
     }
 
-    public function parsingProvider()
+    public static function parsingProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 'list-help',
                 '<mailto:list@host.com?subject=help> (List Instructions)',
-                array(
-                    'mailto:list@host.com?subject=help'
-                ),
-                array(
-                    array('List Instructions')
-                )
-            ),
-            array(
+                [
+                    'mailto:list@host.com?subject=help',
+                ],
+                [
+                    ['List Instructions'],
+                ],
+            ],
+            [
                 'list-help',
                 '<ftp://ftp.host.com/list.txt> (FTP), <mailto:list@host.com?subject=help>',
-                array(
+                [
                     'ftp://ftp.host.com/list.txt',
-                    'mailto:list@host.com?subject=help'
-                ),
-                array(
-                    array('FTP'),
-                    array()
-                )
-            ),
-            array(
+                    'mailto:list@host.com?subject=help',
+                ],
+                [
+                    ['FTP'],
+                    [],
+                ],
+            ],
+            [
                 'list-help',
                 '(Foo) <mailto:foo@example.com> (Foo2)',
-                array(
-                    'mailto:foo@example.com'
-                ),
-                array(
-                    array('Foo', 'Foo2'),
-                )
-            ),
-            array(
+                [
+                    'mailto:foo@example.com',
+                ],
+                [
+                    ['Foo', 'Foo2'],
+                ],
+            ],
+            [
                 'list-post',
                 '<mailto:foo@example.com> (Foo)',
-                array(
-                    'mailto:foo@example.com'
-                ),
-                array(
-                    array('Foo')
-                )
-            ),
-            array(
+                [
+                    'mailto:foo@example.com',
+                ],
+                [
+                    ['Foo'],
+                ],
+            ],
+            [
                 'list-post',
                 'NO (Foo)',
-                array(
-                    null
-                ),
-                array(
-                    array('Foo')
-                )
-            ),
-        );
+                [
+                    null,
+                ],
+                [
+                    ['Foo'],
+                ],
+            ],
+        ];
     }
 
-    /**
-     * @dataProvider listIdParsingProvider
-     */
+    #[DataProvider('listIdParsingProvider')]
     public function testListIdParsing($value, $id, $label)
     {
-        $ob = $this->parser->parse('list-id', $value);
+        $parser = new Horde_ListHeaders();
+        $ob = $parser->parse('list-id', $value);
 
-        $this->assertFalse($ob instanceof Horde_ListHeaders_Id);
+        $this->assertInstanceOf(Horde_ListHeaders_Id::class, $ob);
         $this->assertEquals(
             $id,
             $ob->id
@@ -137,20 +146,66 @@ class ParseTest extends TestCase
         }
     }
 
-    public function listIdParsingProvider()
+    public static function listIdParsingProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 '<commonspace-users.list-id.within.com>',
                 'commonspace-users.list-id.within.com',
-                null
-            ),
-            array(
+                null,
+            ],
+            [
                 '"Lena\'s Personal Joke List" <lenas-jokes.da39efc25c530ad145d41b86f7420c3b.021999.localhost>',
                 'lenas-jokes.da39efc25c530ad145d41b86f7420c3b.021999.localhost',
-                "Lena's Personal Joke List"
-            )
-        );
+                "Lena's Personal Joke List",
+            ],
+        ];
     }
 
+    public function testHeadersReturnsAllRfcHeaders()
+    {
+        $parser = new Horde_ListHeaders();
+        $headers = $parser->headers();
+
+        $expected = [
+            'list-help', 'list-unsubscribe', 'list-subscribe',
+            'list-owner', 'list-post', 'list-archive', 'list-id',
+        ];
+
+        $this->assertEquals($expected, array_keys($headers));
+    }
+
+    public function testListHeadersExistReturnsTrueWhenPresent()
+    {
+        $mock = $this->createMock(Horde_Mime_Headers::class);
+        $mock->method('offsetExists')
+            ->willReturnCallback(function ($key) {
+                return $key === 'list-unsubscribe';
+            });
+
+        $parser = new Horde_ListHeaders();
+        $this->assertTrue($parser->listHeadersExist($mock));
+    }
+
+    public function testListHeadersExistReturnsFalseWhenAbsent()
+    {
+        $mock = $this->createMock(Horde_Mime_Headers::class);
+        $mock->method('offsetExists')
+            ->willReturn(false);
+
+        $parser = new Horde_ListHeaders();
+        $this->assertFalse($parser->listHeadersExist($mock));
+    }
+
+    public function testParseReturnsfalseForUnknownHeader()
+    {
+        $parser = new Horde_ListHeaders();
+        $this->assertFalse($parser->parse('x-unknown', '<http://example.com>'));
+    }
+
+    public function testParseReturnsFalseForEmptyValue()
+    {
+        $parser = new Horde_ListHeaders();
+        $this->assertFalse($parser->parse('list-help', ''));
+    }
 }
