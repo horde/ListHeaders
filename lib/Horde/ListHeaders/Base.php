@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Object representation of a basic list header (RFC 2369) element.
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -31,7 +32,7 @@ class Horde_ListHeaders_Base extends Horde_ListHeaders_Object
      *
      * @var array
      */
-    protected $_comments = array();
+    protected $_comments = [];
 
     /**
      * URL.
@@ -46,7 +47,7 @@ class Horde_ListHeaders_Base extends Horde_ListHeaders_Object
      * @param string $url      URL.
      * @param array $comments  Comments.
      */
-    public function __construct($url, array $comments = array())
+    public function __construct($url, array $comments = [])
     {
         $this->_url = $url;
         $this->_comments = $comments;
@@ -57,11 +58,11 @@ class Horde_ListHeaders_Base extends Horde_ListHeaders_Object
     public function __get($name)
     {
         switch ($name) {
-        case 'comments':
-            return $this->_comments;
+            case 'comments':
+                return $this->_comments;
 
-        case 'url':
-            return $this->_url;
+            case 'url':
+                return $this->_url;
         }
     }
 

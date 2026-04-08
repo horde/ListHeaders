@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -28,7 +29,7 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
      */
     public function headers()
     {
-        return array(
+        return [
             /* RFC 2369 */
             'list-help'         =>  Horde_ListHeaders_Translation::t("Help"),
             'list-unsubscribe'  =>  Horde_ListHeaders_Translation::t("Unsubscribe"),
@@ -37,19 +38,19 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
             'list-post'         =>  Horde_ListHeaders_Translation::t("Post"),
             'list-archive'      =>  Horde_ListHeaders_Translation::t("Archive"),
             /* RFC 2919 */
-            'list-id'           =>  Horde_ListHeaders_Translation::t("Identification")
-        );
+            'list-id'           =>  Horde_ListHeaders_Translation::t("Identification"),
+        ];
     }
 
-   /**
-    * Do any mailing list headers exist?
-    *
-    * @since 1.2.0
-    *
-    * @param Horde_Mime_Headers $ob  Headers object.
-    *
-    * @return boolean  True if any mailing list headers exist.
-    */
+    /**
+     * Do any mailing list headers exist?
+     *
+     * @since 1.2.0
+     *
+     * @param Horde_Mime_Headers $ob  Headers object.
+     *
+     * @return boolean  True if any mailing list headers exist.
+     */
     public function listHeadersExist(Horde_Mime_Headers $ob)
     {
         foreach (array_keys($this->headers()) as $hdr) {
@@ -82,21 +83,21 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
         $this->_params['validate'] = true;
 
         switch (Horde_String::lower($id)) {
-        case 'list-archive':
-        case 'list-help':
-        case 'list-owner':
-        case 'list-subscribe':
-        case 'list-unsubscribe':
-            return $this->_parseBase();
+            case 'list-archive':
+            case 'list-help':
+            case 'list-owner':
+            case 'list-subscribe':
+            case 'list-unsubscribe':
+                return $this->_parseBase();
 
-        case 'list-id':
-            return $this->_parseListId();
+            case 'list-id':
+                return $this->_parseListId();
 
-        case 'list-post':
-            return $this->_parseListPost();
+            case 'list-post':
+                return $this->_parseListPost();
 
-        default:
-            return false;
+            default:
+                return false;
         }
     }
 
@@ -109,10 +110,10 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
     {
         $this->_ptr = 0;
 
-        $out = array();
+        $out = [];
 
         while ($this->_curr() !== false) {
-            $this->_comments = array();
+            $this->_comments = [];
 
             $this->_rfc822SkipLwsp();
 
@@ -123,8 +124,8 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
             $this->_rfc822SkipLwsp();
 
             $url = '';
-            while ((($curr = $this->_curr(true)) !== false) &&
-                   ($curr != '>')) {
+            while ((($curr = $this->_curr(true)) !== false)
+                   && ($curr != '>')) {
                 $url .= $curr;
             }
 
@@ -135,17 +136,17 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
             $this->_rfc822SkipLwsp();
 
             switch ($this->_curr()) {
-            case ',':
-                $this->_rfc822SkipLwsp(true);
-                break;
+                case ',':
+                    $this->_rfc822SkipLwsp(true);
+                    break;
 
-            case false:
-                // No-op
-                break;
+                case false:
+                    // No-op
+                    break;
 
-            default:
-                // RFC 2369 [2] Need to ignore this and all other fields.
-                break 2;
+                default:
+                    // RFC 2369 [2] Need to ignore this and all other fields.
+                    break 2;
             }
 
             $out[] = new Horde_ListHeaders_Base(rtrim($url), $this->_comments);
@@ -187,7 +188,7 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
     protected function _parseListPost()
     {
         /* This value can be the special phrase "NO". */
-        $this->_comments = array();
+        $this->_comments = [];
         $this->_ptr = 0;
 
         $this->_rfc822SkipLwsp();
@@ -200,7 +201,7 @@ class Horde_ListHeaders extends Horde_Mail_Rfc822
         }
 
         $this->_rfc822SkipLwsp();
-        return array(new Horde_ListHeaders_NoPost($this->_comments));
+        return [new Horde_ListHeaders_NoPost($this->_comments)];
     }
 
 }

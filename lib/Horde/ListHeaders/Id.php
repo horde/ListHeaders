@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Object representation of a List-ID (RFC 2919) element.
  *
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -61,11 +62,11 @@ class Horde_ListHeaders_Id extends Horde_ListHeaders_Object
     public function __get($name)
     {
         switch ($name) {
-        case 'id':
-            return $this->_id;
+            case 'id':
+                return $this->_id;
 
-        case 'label':
-            return $this->_label;
+            case 'label':
+                return $this->_label;
         }
     }
 
