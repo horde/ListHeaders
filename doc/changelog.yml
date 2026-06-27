@@ -1,56 +1,14 @@
 ---
-2.0.0alpha5:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2022-11-04
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha4:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2022-11-04
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [rla] Enable PHP 8.x compat.
-    |+
-2.0.0alpha3:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2021-03-13
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha2:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2021-02-24
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha1:
-  api: 2.0.0alpha1
+2.0.0:
+  api: 2.0.0
   state:
     release: stable
     api: stable
-  date: 2021-02-24
+  date: 2026-06-27
   license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: ~
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: "chore: refresh qc fixes and platform deps\nchore: Update workflow dependency"
 2.0.0-beta1:
   api: 2.0.0-beta1
   state:
@@ -60,16 +18,57 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    test: Modernize test suite and increase coverage
-    style: php-cs-fixer
-    Development mode for ListHeaders-2.0.0alpha5
-    Released ListHeaders-2.0.0alpha4
-    Update metadata and workflows for PHP 8 support
-    Add CI job for satis repo update
-    ci.yml added, bootstrap.php adapted
-    no errors left
-    Development mode for ListHeaders-2.0.0alpha5
+  notes: "test: Modernize test suite and increase coverage\nstyle: php-cs-fixer\nDevelopment mode for ListHeaders-2.0.0alpha5\nReleased ListHeaders-2.0.0alpha4\nUpdate metadata and workflows for PHP 8 support\nAdd CI job for satis repo update\nci.yml added, bootstrap.php adapted\nno errors left\nDevelopment mode for ListHeaders-2.0.0alpha5"
+2.0.0alpha5:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2022-11-04
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha4:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2022-11-04
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: "[rla] Enable PHP 8.x compat.\n|+\n"
+2.0.0alpha3:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-03-13
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha2:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha1:
+  api: 2.0.0alpha1
+  state:
+    release: stable
+    api: stable
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: null
 1.2.5:
   api: 1.2.0
   state:
@@ -79,8 +78,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).
+  notes: "[jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).\n"
 1.2.4:
   api: 1.2.0
   state:
@@ -90,8 +88,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Greek translation (Limperis Antonis <limperis@cti.gr>).
+  notes: "[jan] Add Greek translation (Limperis Antonis <limperis@cti.gr>).\n"
 1.2.3:
   api: 1.2.0
   state:
@@ -101,8 +98,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Mark PHP 7 as supported.
+  notes: "[jan] Mark PHP 7 as supported.\n"
 1.2.2:
   api: 1.2.0
   state:
@@ -112,8 +108,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Fix issues with certain locales like Turkish.
+  notes: "[jan] Fix issues with certain locales like Turkish.\n"
 1.2.1:
   api: 1.2.0
   state:
@@ -123,8 +118,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Support loading translations from Composer-installed package.
+  notes: "[jan] Support loading translations from Composer-installed package.\n"
 1.2.0:
   api: 1.2.0
   state:
@@ -134,8 +128,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Added Horde_ListHeaders#listHeadersExist().
+  notes: "[mms] Added Horde_ListHeaders#listHeadersExist().\n"
 1.1.5:
   api: 1.1.0
   state:
@@ -145,8 +138,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Hungarian translation (Andras Galos <galosa@netinform.hu>).
+  notes: "[jan] Add Hungarian translation (Andras Galos <galosa@netinform.hu>).\n"
 1.1.4:
   api: 1.1.0
   state:
@@ -156,8 +148,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Spanish translation (Manuel Perez Ayala <mperaya@alcazaba.unex.es>).
+  notes: "[jan] Add Spanish translation (Manuel Perez Ayala <mperaya@alcazaba.unex.es>).\n"
 1.1.3:
   api: 1.1.0
   state:
@@ -167,8 +158,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).
+  notes: "[jan] Add Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).\n"
 1.1.2:
   api: 1.1.0
   state:
@@ -178,9 +168,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add German translation.
-    [mms] Better translations of the list header fields.
+  notes: "[jan] Add German translation.\n[mms] Better translations of the list header fields.\n"
 1.1.1:
   api: 1.1.0
   state:
@@ -190,8 +178,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Danish translation (Erling Preben Hansen <erling@eph.dk>).
+  notes: "[jan] Add Danish translation (Erling Preben Hansen <erling@eph.dk>).\n"
 1.1.0:
   api: 1.1.0
   state:
@@ -201,8 +188,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Add Horde_ListHeaders#headers().
+  notes: "[mms] Add Horde_ListHeaders#headers().\n"
 1.0.1:
   api: 1.0.0
   state:
@@ -212,30 +198,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Use new Horde_Test layout.
-1.0.0beta1:
-  api: 1.0.0beta1
-  state:
-    release: beta
-    api: beta
-  date: 2012-07-19
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    First beta release for Horde 5.
-1.0.0alpha1:
-  api: 1.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2012-07-06
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] First alpha release for Horde 5 (imported from IMP).
+  notes: "[mms] Use new Horde_Test layout.\n"
 1.0.0:
   api: 1.0.0
   state:
@@ -245,5 +208,24 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    First stable release for Horde 5.
+  notes: "First stable release for Horde 5.\n"
+1.0.0beta1:
+  api: 1.0.0beta1
+  state:
+    release: beta
+    api: beta
+  date: 2012-07-19
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: "First beta release for Horde 5.\n"
+1.0.0alpha1:
+  api: 1.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2012-07-06
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: "[mms] First alpha release for Horde 5 (imported from IMP).\n"
